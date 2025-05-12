@@ -28,16 +28,19 @@ This project implements a question-answering system that:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/Julia-Kotovich/VTA-PROJECT-TEST.git
+git clone git@github.com:Julia-Kotovich/VTA-BE-main.git
 cd VTA-BE-main
 ```
-надо будет отдельно добавить модель
-+ файл 
-path: VTA-BE-main_copy/gc-api-keys.json
-.env
+need to add model from the local machine + 2 files (gc-api-keys.json and .env)
+```bash 
+scp -r /Users/juliakotovich/Projects/VTA-BE-main/VTA-tools/models/mistral-7b-instruct-v0.2.Q4_K_M.gguf julia@5.1.100.213:~/VTA-BE-main/VTA-tools/models/
+scp -r /Users/juliakotovich/Projects/VTA-BE-main/gc-api-keys.json julia@5.1.100.213:~/VTA-BE-main
+scp -r /Users/juliakotovich/Projects/VTA-BE-main/.env julia@5.1.100.213:~/VTA-BE-main
+```
 
 2. Install dependencies using Poetry:
 ```bash
+sudo apt install python3-poetry
 poetry install
 ```
 
