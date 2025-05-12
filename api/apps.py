@@ -11,11 +11,11 @@ class ApiConfig(AppConfig):
     model = None
     model_path = None
     context_path = None
-    model_root_dir = os.path.abspath('./vta_qa_model')
+    model_root_dir = os.path.abspath('./VTA-tools/models/')
     capstone_qa_vta = None
 
     if os.path.exists(model_root_dir):
-        model_path = os.path.abspath('./vta_qa_model/model/vta_model_bert_7alpha')
+        model_path = os.path.abspath('./mistral-7b-instruct-v0.2.Q4_K_M.gguf')
         tokenizer = BertTokenizer.from_pretrained(model_path, local_files_only=True)
         context_path = os.path.abspath('./vta_qa_model/training/newdataset/vista.json')
         model = BertForQuestionAnswering.from_pretrained(model_path, local_files_only=True)
