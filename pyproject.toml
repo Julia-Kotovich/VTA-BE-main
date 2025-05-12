@@ -41,6 +41,7 @@ transformers = "4.40.1"
 typing_extensions = "4.11.0"
 urllib3 = "2.2.1"
 google = "^3.0.0"
+nltk = "^3.9.1"
 
 [build-system]
 requires = ["poetry-core"]

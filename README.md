@@ -44,10 +44,7 @@ sudo apt install python3-poetry
 poetry install
 ```
 
-3. Download the pre-trained model:
-   - Download from: [Model Link](https://drive.google.com/file/d/1RSLcMApBJVpNCT1jkSZ6wHeflh_AZLlo/view?usp=sharing)
-   - Create directory: `vta_qa_model/model/`
-   - Extract the downloaded model into this directory
+3. Download the pre-trained model
 
 4. Set up the database:
 ```bash
