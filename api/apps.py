@@ -14,10 +14,13 @@ class ApiConfig(AppConfig):
     model_root_dir = os.path.abspath('./vta_qa_model')
     capstone_qa_vta = None
 
+    if os.path.exists(model_root_dir):
+        model_path = os.path.abspath('./vta_qa_model/model/vta_model_bert_7alpha')
+        tokenizer = BertTokenizer.from_pretrained(model_path, local_files_only=True)
+        context_path = os.path.abspath('./vta_qa_model/training/newdataset/vista.json')
+        model = BertForQuestionAnswering.from_pretrained(model_path, local_files_only=True)
+    else:
+        print(f"Directory: {model_root_dir} does not exist")
+
     def ready(self):
-        if os.path.exists(self.model_root_dir):
-            self.model_path = os.path.abspath('./vta_qa_model/model/vta_model_bert_7alpha')
-            self.tokenizer = BertTokenizer.from_pretrained(self.model_path, local_files_only=True)
-            self.context_path = os.path.abspath('./vta_qa_model/training/newdataset/vista.json')
-            self.model = BertForQuestionAnswering.from_pretrained(self.model_path, local_files_only=True)
         self.capstone_qa_vta = VTA(self.model, self.tokenizer, self.context_path)
