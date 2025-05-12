@@ -1,0 +1,8 @@
+vta_qa_model/model
+.DS_Store
+.env
+__pycache__
+/venv
+VTA-tools/models/mistral-7b-instruct-v0.2.Q4_K_M.gguf
+vta.pem
+gc-api-keys.json
