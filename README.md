@@ -70,6 +70,8 @@ python manage.py runserver
 
 The application will be available at [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
+http://5.1.100.213:8000 - это будет на сервере
+
 ## API Endpoints
 
 ### Question Answering
