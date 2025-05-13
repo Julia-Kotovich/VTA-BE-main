@@ -31,14 +31,14 @@ This project implements a question-answering system that:
 git clone git@github.com:Julia-Kotovich/VTA-BE-main.git
 cd VTA-BE-main
 ```
-need to add model from the local machine + 2 files (gc-api-keys.json and .env)
+2. need to add model from the local machine + 2 files (gc-api-keys.json and .env)
 ```bash 
 scp -r /Users/juliakotovich/Projects/VTA-BE-main/VTA-tools/models/mistral-7b-instruct-v0.2.Q4_K_M.gguf julia@5.1.100.213:~/VTA-BE-main/VTA-tools/models/
 scp -r /Users/juliakotovich/Projects/VTA-BE-main/gc-api-keys.json julia@5.1.100.213:~/VTA-BE-main
 scp -r /Users/juliakotovich/Projects/VTA-BE-main/.env julia@5.1.100.213:~/VTA-BE-main
 ```
 
-2. Install dependencies using Poetry:
+3. Install Poetry and dependencies:
 ```bash
 sudo apt install python3-poetry
 poetry install
@@ -58,19 +58,17 @@ poetry run python manage.py createsuperuser
 
 ## Running the Application
 
-1. Activate the virtual environment:
+1. Activate the Poetry environment:
 ```bash
 poetry shell
 ```
 
-2. Start the development server:
+2. Start the Django server:
 ```bash
-python manage.py runserver
+python manage.py runserver 0.0.0.0:8000
 ```
 
-The application will be available at [http://127.0.0.1:8000](http://127.0.0.1:8000)
-
-http://5.1.100.213:8000 - это будет на сервере
+The application will be available at [http://127.0.0.1:8000](http://127.0.0.1:8000) (locally) or [http://5.1.100.213:8000](http://5.1.100.213:8000) (on the server).
 
 ## API Endpoints
 
@@ -110,16 +108,16 @@ Parameters:
 ```
 VTA-BE-main/
 ├── api/                 # Main application code
-├── QA_VTA/             # Question answering implementation
-├── VTA_Backend/        # Django project settings
-├── vta_qa_model/       # Model and training data
-│   ├── model/          # BERT model files
-│   └── training/       # Training datasets
-├── VTA-tools/          # Utility scripts
-├── manage.py           # Django management script
-├── poetry.lock         # Poetry lock file
-├── pyproject.toml      # Poetry project configuration
-└── requirements.txt    # Python dependencies
+├── QA_VTA/              # Question answering implementation
+├── VTA_Backend/         # Django project settings
+├── vta_qa_model/        # Model and training data
+│   ├── model/           # BERT model files
+│   └── training/        # Training datasets
+├── VTA-tools/           # Utility scripts
+├── manage.py            # Django management script
+├── poetry.lock          # Poetry lock file
+├── pyproject.toml       # Poetry project configuration
+└── requirements.txt     # Python dependencies (for reference)
 ```
 
 ## Development
@@ -136,54 +134,3 @@ VTA-BE-main/
 [Your License Here]
 
 All [Endpoints](http://127.0.0.1:8000/api/routes/)
-```json
-[
-    {
-        "Endpoint": "/vta-answer/",
-        "method": "POST",
-        "body": {
-            "query": "What is a design tool used for?"
-        },
-        "description": "Returns an answer from the VTA"
-    },
-    {
-        "Endpoint": "/vta/like/",
-        "method": "GET",
-        "body": {
-            "VTAText": "a complete experience of software development from ideation to product",
-            "dislike": true,
-            "like": false,
-            "likeStatus": true,
-            "userId": "01900645-4a53-77f5-93c1-0d2be28460a2",
-            "userText": "what is capstone project course?"
-        },
-        "description": "Like VTA response"
-    },
-    {
-        "Endpoint": "/vta/dislike/",
-        "method": "GET",
-        "body": {
-            "VTAText": "describing and defending a software architecture, coding in groups and as a large team, integrating independent works, using a source code versioning system",
-            "dislike": false,
-            "like": false,
-            "likeStatus": true,
-            "userId": "01900645-4a53-77f5-93c1-0d2be28460a2",
-            "userText": "what is capstone?"
-        },
-        "description": "Like VTA response"
-    },
-    {
-        "Endpoint": "/vta/feedback/",
-        "method": "POST",
-        "body": {
-            "userFeedback": "i like the model",
-            "userId": "5e7f6bad-0511-4411-9134-826C9250f335"
-        },
-        "description": "Give a general feedback on the VTA"
-    }
-]
-
-```
-Directory Info
-📍**NB**: THIS REPO THAT NOT INCLUDE THE FINETUNED MODEL DUE TO ITS SIZE.
-
